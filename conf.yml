@@ -1,0 +1,55 @@
+elasticsearch:
+  address: localhost
+  port: 9200
+  ssl: False
+  credentials:
+    - username: USERNAME
+      password: PASSWORD
+      mail_to:
+        - some_mail@example.com
+      mail_from: some_mail@example.com
+      subject: Incident report
+
+mail:
+  server: server.example.com
+  style: |
+    #agg_table {
+      font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    #agg_table td, #agg_table th {
+      border: 1px solid black;
+      padding: 8px;
+    }
+    #agg_table th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #4CAF50;
+      color: white;
+    }
+  body: |
+    <html>
+      <head>
+        <style>
+          {style}
+        </style>
+      </head>
+      <body>
+        {table}
+      </body>
+    </html>
+
+query:
+  mode: separate
+  queries:
+    - name: ''
+      index: ''
+      links:
+        Local IPV4: ''
+        Foreign IPV4: ''
+      body: ''
+
+log_level: info
+log_file: './elastic_reports.log'
